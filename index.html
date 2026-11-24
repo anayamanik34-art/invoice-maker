@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Eksoch Invoice Maker</title>
+  <meta name="description" content="Make professional invoices and quotations, save them as PDF, and track what you're owed. Works offline; your data stays on your device.">
+  <meta name="theme-color" content="#16324f">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#/">
+        <img src="icons/icon-192.png" alt="" width="32" height="32">
+        <span>Invoice Maker</span>
+      </a>
+      <nav class="nav">
+        <a href="#/" data-nav="dash"><span class="ico">◧</span><span>Dashboard</span></a>
+        <a href="#/invoices" data-nav="invoices"><span class="ico">₹</span><span>Invoices</span></a>
+        <a href="#/quotes" data-nav="quotes"><span class="ico">✎</span><span>Quotations</span></a>
+        <a href="#/clients" data-nav="clients"><span class="ico">☺</span><span>Clients</span></a>
+        <a href="#/settings" data-nav="settings"><span class="ico">⚙</span><span>Settings</span></a>
+      </nav>
+      <div class="plan-badge" id="planBadge"></div>
+    </aside>
+    <main id="view" class="view" tabindex="-1"></main>
+  </div>
+  <div id="print-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="pro-codes.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
